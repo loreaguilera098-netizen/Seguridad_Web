@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Seguro</title>
+    <style>
+        body { font-family: Arial; margin: 50px; }
+        .container { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        input, button { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inicio de Sesión</h2>
+        <form action="/auth/login" method="POST">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+        <p><small>Credenciales: alumno / santo123</small></p>
+    </div>
+</body>
+</html>
