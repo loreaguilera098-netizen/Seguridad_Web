@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { users } = require('../data/users');
 
-// POST /auth/login
+// POST /auth/login (para JSON)
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -13,12 +13,10 @@ router.post('/login', (req, res) => {
         return res.status(401).send('Credenciales incorrectas');
     }
 
-    // Crear sesión
     req.session.user = { username: user.username, role: user.role };
     console.log(`[LOG] Login exitoso: ${username}`);
-
-    // Redirigir a zona privada
-    res.redirect('/private/dashboard');
+    
+    res.status(200).json({ message: 'Login exitoso', redirect: '/private/dashboard' });
 });
 
 // GET /auth/logout
