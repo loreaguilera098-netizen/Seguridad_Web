@@ -1,12 +1,9 @@
 function requireAuth(req, res, next) {
-    if (req.session && req.session.user) {
-        return next(); // Usuario autenticado
-    }
-    // Denegar acceso
-    res.status(401).send(`
-        <h3>Acceso denegado</h3>
-        <p>No tienes una sesión activa. <a href="/login.html">Iniciar sesión</a></p>
-    `);
+  if (req.session.user) {
+    next();
+  } else {
+    res.status(403).send('Acceso denegado. Inicia sesión primero.');
+  }
 }
 
-module.exports = { requireAuth };
+module.exports = requireAuth;
